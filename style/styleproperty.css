@@ -1,0 +1,208 @@
+body {
+    font-family: "Roboto", "Helvetica", "Sans-serif";
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #777;
+    line-height: 1.7;
+}
+  
+header {
+    background-color: #3a3a3a;
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+  }
+  
+  nav {
+    margin-left: auto; /* Align navigation items to the right */
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #ccc;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+  
+  nav ul li a:hover {
+    color: #fff;
+  }
+  
+  
+  .navbar a.logo {
+    color: #fff;
+    font-size: 1.8rem;
+    text-decoration: none;
+  }
+  
+  
+  .search-bar {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .search-bar input {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    width: 250px;
+  }
+  
+  .search-bar button {
+    padding: 0.5rem 1rem;
+    background-color: #00c4b3;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .search-bar button:hover {
+    background-color: #008c8c;
+  }
+  
+  .property-section {
+    text-align: center;
+    padding: 2rem;
+    background-color: #fff;
+  }
+  
+  .property-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding: 0 1rem;
+  }
+  
+  .property-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .property-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .property-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .property-card h2 {
+    padding: 1rem;
+    font-size: 1.1rem;
+    background-color: #00c4b3;
+    color: #fff;
+  }
+  
+  .property-card p {
+    padding: 1rem;
+    color: #666;
+  }
+  
+  .load-more-container {
+    margin-top: 2rem;
+  }
+  
+  #loadMoreBtn {
+    padding: 0.7rem 2rem;
+    background-color: #00c4b3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #loadMoreBtn:hover {
+    background-color: #008c8c;
+  }
+  footer {
+    background-color: #3a3a3a;
+    color: #ccc;
+    padding: 2rem 0;
+    text-align: center;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 1rem;
+  }
+  
+  .footer-section {
+    width: 30%;
+    margin: 0.5rem;
+  }
+  
+  .footer-section h2 {
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin: 0.5rem 0;
+  }
+  
+  .footer-section ul li i {
+    margin-right: 1rem;
+  }
+  
+  .footer-section ul li a {
+    text-decoration: none;
+    color: #ccc;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-section ul li a:hover {
+    color: #fff;
+  }
+  
+  .social-icons a {
+    text-decoration: none;
+    color: #ccc;
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  .social-icons a:hover {
+    color: #fff;
+  }
+  
+  .footer-bottom {
+    margin-top: 2rem;
+    border-top: 1px solid #444;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+  }
+  

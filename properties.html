@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hamia Hapa Real Estate - Our Spaces</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" href="style/styleproperty.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://kit.fontawesome.com/95dc93da07.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="navbar">
+      <a href="#" class="logo"><b>HamiaHapa.</b></a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">Properties</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#">Consultation</a></li>
+          <!--<li><a href="#">Contact</a></li>-->
+        </ul>
+      </nav>
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search for properties">
+        <button id="searchBtn">🔍</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Property Section -->
+  <section class="property-section">
+    <h1>Our Spaces</h1>
+    <p>Explore our beautiful co-working spaces and apartments available for rent.</p>
+
+    <!-- Property Grid (Dynamic loading via JS) -->
+    <div id="property-grid" class="property-grid"></div>
+    
+    <!-- Button to Load More Properties -->
+    <div class="load-more-container">
+      <button id="loadMoreBtn">Load More Properties</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section about">
+        <h2>Hamia Hapa Real Estate</h2>
+        <p>Your go-to platform for premium co-working spaces and apartments.</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+  
+      <div class="footer-section links">
+        <h2>Quick Links</h2>
+        <ul>
+          <li><a href="#">Properties</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Consultation</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-section contact">
+        <h2>Contact Us</h2>
+        <ul>
+          <li><i class="fas fa-map-marker-alt"></i> Dar Es Salaam, Tanzania</li>
+          <li><i class="fas fa-phone"></i> +255 627 492 719</li>
+          <li><i class="fas fa-envelope"></i> info@hamiahapa.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Hamia Hapa. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Properties data array
+    const properties = [
+      {img: 'image/dar1.jfif', title: 'Co-Working Space - Dar Es Salaam', desc: 'A modern, open-space office environment for startups and freelancers.'},
+      {img: 'image/Ar.jpeg', title: 'Luxury Apartment - Arusha', desc: 'A serene and stylish apartment located in the heart of the city.'},
+      {img: 'image/town.jpg', title: 'Townhouse - Mwanza', desc: 'Beautifully designed townhouse perfect for families.'},
+      {img: 'image/zanz.jfif', title: 'Beachfront Villa - Zanzibar', desc: 'Luxurious villa with a private beach view.'},
+      {img: 'image/mwanz.avif', title: 'City Loft - Dodoma', desc: 'A contemporary loft located in the city center.'},
+      {img: 'image/kili.jpg', title: 'Penthouse - Moshi', desc: 'A stunning penthouse with a breathtaking view of Mt. Kilimanjaro.'},
+      {img: 'image/studio.jpg', title: 'Studio Apartment - Tanga', desc: 'A cozy and affordable studio apartment in the suburbs.'},
+      {img: 'image/arusha1.jpg', title: 'Office Space - Morogoro', desc: 'Spacious office space with ample parking.'},
+      {img: 'image/vacant.avif', title: 'Luxury Villa - Pemba', desc: 'Private villa in a remote, peaceful location.'}
+    ];
+
+    let itemsToShow = 6; // Number of properties to initially show
+
+    // Load initial properties
+    function loadProperties() {
+      const propertyGrid = document.getElementById('property-grid');
+      propertyGrid.innerHTML = ''; // Clear previous properties
+      for (let i = 0; i < itemsToShow && i < properties.length; i++) {
+        const property = properties[i];
+        const propertyCard = `
+          <div class="property-card">
+            <img src="${property.img}" alt="${property.title}">
+            <h2>${property.title}</h2>
+            <p>${property.desc}</p>
+          </div>
+        `;
+        propertyGrid.innerHTML += propertyCard;
+      }
+    }
+
+    // Load more properties when button is clicked
+    document.getElementById('loadMoreBtn').addEventListener('click', function() {
+      itemsToShow += 6; // Show 6 more properties
+      loadProperties(); // Reload properties with the new limit
+      if (itemsToShow >= properties.length) {
+        this.style.display = 'none'; // Hide button if all properties are shown
+      }
+    });
+
+    // Initial property load
+    window.onload = loadProperties;
+
+    // Search functionality
+    document.getElementById('searchBtn').addEventListener('click', function() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const filteredProperties = properties.filter(property => 
+        property.title.toLowerCase().includes(searchTerm) || 
+        property.desc.toLowerCase().includes(searchTerm)
+      );
+
+      const propertyGrid = document.getElementById('property-grid');
+      propertyGrid.innerHTML = ''; // Clear previous properties
+      filteredProperties.forEach(property => {
+        const propertyCard = `
+          <div class="property-card">
+            <img src="${property.img}" alt="${property.title}">
+            <h2>${property.title}</h2>
+            <p>${property.desc}</p>
+          </div>
+        `;
+        propertyGrid.innerHTML += propertyCard;
+      });
+
+      if (filteredProperties.length === 0) {
+        propertyGrid.innerHTML = '<p>No properties found matching your search.</p>';
+      }
+    });
+  </script>
+</body>
+</html>
